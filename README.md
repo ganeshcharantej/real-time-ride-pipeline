@@ -18,9 +18,4 @@ This pipeline routes data through three distinct processing layers to progressiv
 3. **Silver Layer (Cleaned):** `silver_processor.py` reads the Bronze data stream, enforces a strict `StructType` schema, casts string timestamps into native Spark `TimestampType`, filters out invalid rows, and writes the clean data to the Silver zone.
 4. **Gold Layer (Aggregated):** `gold_processor.py` performs stateful streaming aggregations on the Silver data. It continuously calculates total revenue, total rides, and average fare grouped by `pickup_location`, outputting a live leaderboard to the console.
 
-## 🚀 How to Run Locally
 
-### 1. Start the Infrastructure
-Make sure Docker Desktop is running, then spin up the Kafka and Spark cluster:
-```bash
-docker-compose up -d
